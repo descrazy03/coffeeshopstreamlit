@@ -1,0 +1,14 @@
+cookie:
+  expiry_days: 30
+  key: coffeeshop_key
+  name: birthday_cookie
+credentials:
+  usernames:
+    coffeeshopapp:
+      email: desergina@gmail.com
+      failed_login_attemps: 0
+      failed_login_attempts: 0
+      logged_in: true
+      loggin_in: true
+      name: Desmond Ergina
+      password: $2b$12$zAJOvqB.zsghW6qtL2l1.uSA7rX63H30AIShFDG0W8CFYDJNzXc32

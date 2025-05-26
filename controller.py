@@ -1,13 +1,7 @@
 import sqlite3
 import pandas as pd
 from uuid import uuid4
-from database.models import RecipeBase, CoffeeBase, CafeBase
-from datetime import datetime
-
-import sqlite3
-import pandas as pd
-from uuid import uuid4
-from database.models import RecipeBase, CoffeeBase, CafeBase
+from database.models import CafeBase
 from datetime import datetime
 
 '''
@@ -31,7 +25,7 @@ class Controller:
         conn.close()
 
     # POST new row to table
-    def post(self, data: RecipeBase | CoffeeBase | CafeBase):
+    def post(self, data: CafeBase):
         to_post = data.model_dump()
         id = str(uuid4())
         to_post['id'] = id
@@ -50,14 +44,9 @@ class Controller:
         return entry
 
     # UPDATE one row from table
-    def update(self, updates: RecipeBase | CoffeeBase | CafeBase, id):
+    def update(self, updates: CafeBase, id):
         # determine which table to use and get original row
-        if self.table == "coffees":
-            og_data = CoffeeBase(**self.get_one(id).iloc[0])
-        elif self.table == "recipes":
-            og_data = RecipeBase(**self.get_one(id).iloc[0])
-        elif self.table == "cafes":
-            og_data = CafeBase(**self.get_one(id).iloc[0])
+        og_data = CafeBase(**self.get_one(id).iloc[0])
         
         # create row from updated row from input
         new_data = og_data.model_copy(update=updates.model_dump(exclude_unset=True))

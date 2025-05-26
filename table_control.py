@@ -4,6 +4,8 @@ from form import cafe_form
 import streamlit as st
 import pandas as pd
 
+cafes = Controller("cafes")
+
 def cafes_table(fav_only=False):
     
     # filter form
@@ -57,7 +59,8 @@ def cafes_table(fav_only=False):
                             on_select='rerun',
                             selection_mode='single-row',
                             hide_index=True,
-                            use_container_width=True)
+                            use_container_width=True,
+                            key="interactive")
     
     # table selection funtionality
     if cafes_df.selection.rows:
