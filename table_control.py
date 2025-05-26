@@ -7,8 +7,6 @@ import pandas as pd
 cafes = Controller("cafes")
 
 def cafes_table(fav_only=False):
-
-    st.write("hello")
     
     # filter form
     if fav_only == False:
