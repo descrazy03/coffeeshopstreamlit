@@ -1,0 +1,5 @@
+pandas
+altair
+streamlit==1.45.0
+SQLAlchemy
+pydantic
