@@ -21,7 +21,7 @@ def cafe_form(cafe_id=None):
         has_wifi_input = st.checkbox("Has Wifi", value=False if cafe_id == None else og['has_wifi'].iloc[0])
         wifi_pass_input = st.text_input("Wifi Password: ", value="" if cafe_id == None else og['wifi_pass'].iloc[0])
         has_outlets_input = st.checkbox("Has Outlets", value=False if cafe_id == None else og['has_outlets'].iloc[0])
-        is_fav_input = st.checkbox("Is Favorite Cafe", value=False if cafe_id == None else og['is_fav'].iloc[0])
+        is_fav_input = st.checkbox("Recommended for Work", value=False if cafe_id == None else og['is_fav'].iloc[0])
         notes_input = st.text_area("Additional Notes", value="" if cafe_id == None else og['notes'].iloc[0])
         
         st.header("Hours Information")

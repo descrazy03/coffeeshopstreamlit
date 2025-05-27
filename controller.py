@@ -2,7 +2,6 @@ import sqlite3
 import pandas as pd
 from uuid import uuid4
 from database.models import CafeBase
-from datetime import datetime
 
 '''
 define basic CRUD methods for each database model

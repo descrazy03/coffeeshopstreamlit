@@ -1,7 +1,7 @@
 from database.setup import Base
 from typing import Optional
 from pydantic import BaseModel
-from sqlalchemy import Boolean, String, Column, Uuid, ForeignKey, Text, Float, Integer
+from sqlalchemy import Boolean, String, Column, Text 
 
 '''
 define database models for data validation

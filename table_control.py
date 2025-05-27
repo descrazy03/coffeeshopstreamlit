@@ -1,5 +1,4 @@
 from controller import Controller
-from database.models import CafeBase
 from form import cafe_form
 import streamlit as st
 import pandas as pd
@@ -31,12 +30,9 @@ def cafes_table(fav_only=False):
                         ['sun_open', 'sun_close']]
             days_dict = dict(zip(weekdays, days_cols)) 
             selected_day = days_dict[day_filter]
-            try:
-                cafes_db[selected_day[0]] = pd.to_datetime(cafes_db[selected_day[0]], format="%H:%M").dt.time
-                cafes_db[selected_day[1]] = pd.to_datetime(cafes_db[selected_day[1]], format="%H:%M").dt.time
-                cafes_db = cafes_table.where((time_filter >= cafes_db[selected_day[0]]) & (time_filter <= cafes_table[selected_day[1]]))
-            except:
-                pass
+            cafes_db[selected_day[0]] = pd.to_datetime(cafes_db[selected_day[0]], format="%H:%M").dt.time
+            cafes_db[selected_day[1]] = pd.to_datetime(cafes_db[selected_day[1]], format="%H:%M").dt.time
+            cafes_db = cafes_db.where((time_filter >= cafes_db[selected_day[0]]) & (time_filter <= cafes_db[selected_day[1]]))
     
 
         # filter functionality for amenities
@@ -55,7 +51,7 @@ def cafes_table(fav_only=False):
                             column_order=["name", "address", "is_fav"],
                             column_config={"name": "Name",
                                            "address": "Address",
-                                           "is_fav": st.column_config.CheckboxColumn("Is Favorite")},
+                                           "is_fav": st.column_config.CheckboxColumn("Recommended for Work")},
                             on_select='rerun',
                             selection_mode='single-row',
                             hide_index=True,
